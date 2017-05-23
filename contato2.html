@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contato</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="css/contato.css"/>
+    <link rel="stylesheet" type="text/css" href="css/index.css"/>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script type="text/javascript">
+ function validaForm()
+ {
+    erro = false;
+    if($('#nome').val() == '')
+    {
+        alert('Voc&ecirc; precisa preencher o campo Nome');erro = true;
+    }
+    if($('#email').val() == '' &amp;&amp; !erro)
+    {
+        alert('Voc&ecirc; precisa preencher o campo E-mail');erro = true;
+    }
+    if($('#mensagem').val() == '' &amp;&amp; !erro)
+    {
+        alert('Voc&ecirc; precisa preencher o campo Mensagem');erro = true;
+    }
+
+    //se nao tiver erros
+    if(!erro)
+    {
+        $('#formulario_contato').submit();
+    }
+ }
+</script>
+</head>
+<body>
+<div>
+    <h2>Formulário de contato</h2>
+        <form method="post" onsubmit="validaForm(); return false;" class="form">
+            <p class="name">
+                <label for="name">Nome</label>
+                <input type="text" placeholder="Seu Nome"/>
+            </p>
+
+            <p class="email">
+                <label for="email">E-mail</label>
+                <input type="text" placeholder="mail@exemplo.com.br"/>
+            </p>
+
+            <p class="text">
+                <label for="mensagem">Mensagem</label>
+                <textarea placeholder="Escreva sua mensagem" /></textarea>
+            </p>
+
+            <p class="submit">
+                <input type="submit" value="Enviar" />
+            </p>
+        </form>
+</div>
+</body>
+</html>

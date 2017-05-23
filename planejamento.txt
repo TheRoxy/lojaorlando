@@ -1,0 +1,3 @@
+Colocar Portfólio no site do lado de Contato.
+copia a parte do código que ta na index do Porfolio.
+Escolher as imagens para o site em geral.

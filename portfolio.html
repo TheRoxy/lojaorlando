@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Orlando Art e Decoração</title>
+	<link rel="stylesheet" type="text/css" href="css/index.css">
+	<link rel="stylesheet" type="css/reset.css" media="all" href="css/reset.css" />
+	<link rel="stylesheet" type="css/trunk.css" media="all" href="css/trunk.css" />
+	<link href="https://fonts.googleapis.com/css?family=Poiret+One" rel="stylesheet">
+<script type="text/javascript">
+	if (typeof jQuery == 'undefined')
+		document.write(unescape("%3Cscript src='js/jquery-1.9.js'" + 
+															"type='text/javascript'%3E%3C/script%3E"))
+</script>
+<script type="text/javascript" language="javascript" src="js/trunk.js"></script>
+<script type="text/javascript" language="javascript" src="js/jquery-1.9.js"></script>
+</head>
+
+<body>
+
+<script>
+function myFunction() {
+    var x = document.getElementById("myTopnav");
+    if (x.className === "topnav") {
+        x.className += " responsive";
+    } else {
+        x.className = "topnav";
+    }
+}
+</script>
+<script type="text/javascript">
+function setaImagem(){
+			var settings = {
+				primeiraImg: function(){
+					elemento = document.querySelector("#slider a:first-child");
+					elemento.classList.add("ativo");
+					this.legenda(elemento);
+				},
+				slide: function(){
+					elemento = document.querySelector(".ativo");
+					if(elemento.nextElementSibling){
+						elemento.nextElementSibling.classList.add("ativo");
+						settings.legenda(elemento.nextElementSibling);
+						elemento.classList.remove("ativo");
+					}else{
+						elemento.classList.remove("ativo");
+						settings.primeiraImg();
+					}
+				},
+				proximo: function(){
+					clearInterval(intervalo);
+					elemento = document.querySelector(".ativo");
+					
+					if(elemento.nextElementSibling){
+						elemento.nextElementSibling.classList.add("ativo");
+						settings.legenda(elemento.nextElementSibling);
+						elemento.classList.remove("ativo");
+					}else{
+						elemento.classList.remove("ativo");
+						settings.primeiraImg();
+					}
+					intervalo = setInterval(settings.slide,4000);
+				},
+				anterior: function(){
+					clearInterval(intervalo);
+					elemento = document.querySelector(".ativo");
+					
+					if(elemento.previousElementSibling){
+						elemento.previousElementSibling.classList.add("ativo");
+						settings.legenda(elemento.previousElementSibling);
+						elemento.classList.remove("ativo");
+					}else{
+						elemento.classList.remove("ativo");						
+						elemento = document.querySelector("a:last-child");
+						elemento.classList.add("ativo");
+						this.legenda(elemento);
+					}
+					intervalo = setInterval(settings.slide,4000);
+				},
+				legenda: function(obj){
+					var legenda = obj.querySelector("img").getAttribute("alt");
+					document.querySelector("figcaption").innerHTML = legenda;
+				}
+			}
+			//chama o slide
+			settings.primeiraImg();
+			//chama a legenda
+			settings.legenda(elemento);
+			//chama o slide à um determinado tempo
+			var intervalo = setInterval(settings.slide,4000);
+			document.querySelector(".next").addEventListener("click",settings.proximo,false);
+			document.querySelector(".prev").addEventListener("click",settings.anterior,false);
+		}
+		window.addEventListener("load",setaImagem,false);
+</script>
+
+<!--Menus-->
+<div class="topnav" id="myTopnav">
+  <a href="/sitesofa/index.html">Home</a>
+  <a href="/sitesofa/news">(Vazio)</a>
+  <a href="/sitesofa/portfolio.html">Portfólio</a>
+  <a href="/sitesofa/contato.html">Contato</a>
+  <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
+</div>
+
+<!--portfólio-->
+<div class="port">
+<h1>Portfolio</h1>
+<h4 style="margin-bottom: 5%;">Alguns de nossos trabalhos</h4>
+<img src="img/img1.jpg" width="50%" style="float: left;">
+<img src="img/img2.jpg" width="50%" style="float: left;">
+<img src="img/img1.jpg" width="50%" style="float: left;">
+<img src="img/img2.jpg" width="50%" style="float: left;">
+</div>
+
+</body>
+</html>
